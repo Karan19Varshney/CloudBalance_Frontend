@@ -1,14 +1,15 @@
-
-import React, { useEffect, useState } from 'react';
-import {Box,Button,TextField,Typography,} from '@mui/material';
-import { useNavigate, Link, useParams } from 'react-router-dom';
-import { postApi, getApi, putApi } from '../../../../Service/CommonService';
-import { URLS } from '../../../../Service/URLS';
+import React, { useEffect, useState } from "react";
+import { Box, Button, TextField, Typography } from "@mui/material";
+import { useNavigate, Link, useParams } from "react-router-dom";
+import { postApi, getApi, putApi } from "../../../../Service/CommonService";
+import { URLS } from "../../../../Service/URLS";
 import {
   roles,
   renderRoleSelect,
   renderAccountSelector,
-} from '../config/UserFormConfig.jsx';
+} from "../config/UserFormConfig.jsx";
+
+import CommonButton from "../../../../components/Button/CommonButton.jsx";
 
 const AddUser = () => {
   const { id } = useParams();
@@ -16,10 +17,10 @@ const AddUser = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    role: '',
+    name: "",
+    email: "",
+    password: "",
+    role: "",
     accountIds: [],
   });
 
@@ -32,7 +33,7 @@ const AddUser = () => {
         setFormData({
           name: user.name,
           email: user.email,
-          password: '',
+          password: "",
           role: user.role,
           accountIds: user.accountIds || [],
         });
@@ -52,11 +53,11 @@ const AddUser = () => {
         const account = await getApi(URLS.GetAccounts);
         setAvailableAccounts(account);
       } catch (err) {
-        console.error('Error fetching accounts:', err.message);
+        console.error("Error fetching accounts:", err.message);
       }
     };
 
-    if (formData.role === 'CUSTOMER') {
+    if (formData.role === "CUSTOMER") {
       fetchAccounts();
     } else {
       setAvailableAccounts([]);
@@ -76,7 +77,7 @@ const AddUser = () => {
     const { value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      accountIds: typeof value === 'string' ? value.split(',') : value,
+      accountIds: typeof value === "string" ? value.split(",") : value,
     }));
   };
 
@@ -87,16 +88,16 @@ const AddUser = () => {
       } else {
         await postApi(URLS.CreateUser, formData);
       }
-      navigate('/dashboard/UserManagement');
+      navigate("/dashboard/UserManagement");
     } catch (err) {
-      console.error('Error saving user:', err.message);
+      console.error("Error saving user:", err.message);
     }
   };
 
   return (
     <Box p={3}>
       <Typography variant="h4" mb={2}>
-        {isEdit ? 'Edit User' : 'Add New User'}
+        {isEdit ? "Edit User" : "Add New User"}
       </Typography>
 
       <Box display="flex" flexDirection="column" gap={2} maxWidth={400}>
@@ -126,7 +127,7 @@ const AddUser = () => {
 
         {renderRoleSelect(formData.role, handleChange)}
 
-        {formData.role === 'CUSTOMER' &&
+        {formData.role === "CUSTOMER" &&
           renderAccountSelector(
             formData.accountIds,
             handleAccountChange,
@@ -134,7 +135,7 @@ const AddUser = () => {
           )}
 
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Button variant="contained" color="primary" onClick={handleSubmit}>
+          {/* <Button variant="contained" color="primary" onClick={handleSubmit}>
             {isEdit ? 'Update User' : 'Submit'}
           </Button>
           <Button
@@ -144,7 +145,18 @@ const AddUser = () => {
             color="secondary"
           >
             Go Back
-          </Button>
+          </Button> */}
+          <CommonButton
+            text={isEdit ? "Update User" : "Submit"}
+            onClick={handleSubmit}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
+          />
+
+          <CommonButton
+            text="Go Back"
+            onClick={() => navigate("/dashboard/UserManagement")}
+            className="border border-gray-400 text-gray-700 px-4 py-2 rounded-md"
+          />
         </Box>
       </Box>
     </Box>

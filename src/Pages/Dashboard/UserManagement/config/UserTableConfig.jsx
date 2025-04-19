@@ -5,12 +5,12 @@ import EditIcon from '@mui/icons-material/Edit';
 
 export const getUserTableColumns = (role, handleEditUser) => {
   const baseColumns = [
-    {
-      field: 'id',
-      headerName: 'ID',
-      width: 90,
-      headerClassName: 'super-app-theme--header',
-    },
+    // {
+    //   field: 'id',
+    //   headerName: 'ID',
+    //   width: 90,
+    //   headerClassName: 'super-app-theme--header',
+    // },
     {
       field: 'name',
       headerName: 'Full Name',

@@ -1,27 +1,28 @@
-import React from 'react';
-import logo from '../../assets/Cloudbalance.png';
-import { useNavigate, Link } from 'react-router-dom';
-import { postApi } from '../../Service/CommonService';
-import { URLS } from '../../Service/URLS';
-import { useDispatch, useSelector } from 'react-redux';
-import { clearUserData } from '../../Redux/action';
-import { Info } from 'lucide-react'; 
+import React from "react";
+import logo from "../../assets/Cloudbalance.png";
+import { useNavigate, Link } from "react-router-dom";
+import { postApi } from "../../Service/CommonService";
+import { URLS } from "../../Service/URLS";
+import { useDispatch, useSelector } from "react-redux";
+import { clearUserData } from "../../Redux/action";
+// import { Info } from "lucide-react";
+import CommonButton from "../Button/CommonButton";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { userName, Role } = useSelector((state) => state.user || {});
+  const { userName } = useSelector((state) => state.user || {});
 
   const handleLogout = async () => {
     try {
       await postApi(URLS.Logout);
     } catch (error) {
-      console.error('Error logging out:', error);
+      console.error("Error logging out:", error);
     }
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     dispatch(clearUserData());
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -50,12 +51,11 @@ const Navbar = () => {
           </div>
           <div className="text-sm text-blue-600">
             <div className="text-xs text-gray-500">Welcome,</div>
-            <div className="font-bold">{userName || 'User Name'}</div>
-            <div className="text-xs font-medium text-blue-500">{Role || 'ROLE_USER'}</div>
+            <div className="font-bold">{userName || "User Name"}</div>
           </div>
-          <Info className="h-4 w-4 text-gray-400" />
+          {/* <Info className="h-4 w-4 text-gray-400" /> */}
         </div>
-        <button
+        {/* <button
   onClick={handleLogout}
   className="text-white px-4 py-2 rounded-md font-semibold"
   style={{
@@ -66,8 +66,19 @@ const Navbar = () => {
   onMouseLeave={(e) => (e.target.style.backgroundColor = 'rgb(59, 130, 246)')}
 >
   Logout
-</button>
-
+</button> */}
+        <CommonButton
+          text="Logout"
+          onClick={handleLogout}
+          className="text-white px-4 py-2 rounded-md font-semibold"
+          onMouseEnter={(e) =>
+            (e.target.style.backgroundColor = "rgb(37, 99, 235)")
+          }
+          onMouseLeave={(e) =>
+            (e.target.style.backgroundColor = "rgb(59, 130, 246)")
+          }
+          style={{ backgroundColor: "rgb(59, 130, 246)" }}
+        />
       </div>
     </header>
   );
