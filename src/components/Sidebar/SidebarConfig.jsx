@@ -1,21 +1,13 @@
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import PeopleIcon from "@mui/icons-material/People";
+import CloudIcon from "@mui/icons-material/Cloud";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+
 const sidebarItems = [
-    {
-      name: 'Cost Explorer',
-      path: '/dashboard/CostExplorer',
-    },
-    {
-      name: 'AWS Services',
-      path: '/dashboard/AwsService',
-    },
-    {
-      name: 'OnBoarding',
-      path: '/dashboard/onboarding',
-    },
-    {
-      name: 'User Management',
-      path: '/dashboard/UserManagement',
-    }
-  ];
-  
-  export default sidebarItems;
-  
+  { path: "/dashboard/onboarding", name: "OnBoarding", icon: <DashboardIcon /> },
+  { path: "/dashboard/AwsService", name: "AWS Services", icon: <CloudIcon /> },
+  { path: "/dashboard/CostExplorer", name: "Cost Explorer", icon: <MonetizationOnIcon /> },
+  { path: "/dashboard/UserManagement", name: "User Management", icon: <PeopleIcon /> },
+];
+
+export default sidebarItems;
