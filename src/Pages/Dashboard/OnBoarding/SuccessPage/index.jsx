@@ -1,27 +1,28 @@
-import React from 'react';
-import { Box, Typography, Button, Container } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import tickImage from '../../../../assets/onboarding/green_tick_check.svg'; 
+import React from "react";
+import { Box, Typography, Button, Container } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import tickImage from "../../../../assets/onboarding/green_tick_check.svg";
+import CommonButton from "../../../../components/Button/CommonButton";
 
 const SubmitPage = () => {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate('/dashboard/onboarding'); 
+    navigate("/dashboard/CostExplorer");
   };
 
   return (
     <Container
       maxWidth="sm"
       sx={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
         gap: 4,
-        bgcolor: '#f9fafb', 
+        bgcolor: "#f9fafb",
         borderRadius: 2,
       }}
     >
@@ -30,8 +31,8 @@ const SubmitPage = () => {
         src={tickImage}
         alt="Success Tick"
         sx={{
-          width: '120px',
-          height: '120px',
+          width: "120px",
+          height: "120px",
           mb: 2,
         }}
       />
@@ -44,14 +45,12 @@ const SubmitPage = () => {
         We’ve received your submission and will get back to you shortly.
       </Typography>
 
-      <Button
-        variant="contained"
-        size="large"
-        sx={{ mt: 2, textTransform: 'none', borderRadius: '8px' }}
+      <CommonButton
         onClick={handleBack}
+        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold mt-2"
       >
         Back to Dashboard
-      </Button>
+      </CommonButton>
     </Container>
   );
 };

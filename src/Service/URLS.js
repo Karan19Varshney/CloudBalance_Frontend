@@ -5,6 +5,14 @@ export const URLS = {
     CreateUser: "/admin/create-user",
     UpdateUser: "/admin/update-user",
     GetUserById: "/admin/get-user", 
-    GetAccounts: "/accounts"
+    GetAccounts: "/accounts",
+
+
+    // AWS Accounts URLS
+
+    GetEC2Instances:"/aws/ec2",
+    GetRDSInstances:"aws/rds",
+    GetASGInstances:"aws/asg"
+
   };
   
