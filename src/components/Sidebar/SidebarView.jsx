@@ -48,11 +48,15 @@ const SidebarView = ({ items, collapsed, setCollapsed }) => {
           <li key={item.path}>
             <CommonButton
               onClick={() => navigate(item.path)}
-              className={`w-full text-left flex items-center gap-4 px-4 py-2 rounded transition-all hover:bg-blue-500 hover:text-white ${
+              className={`w-full text-left flex items-center px-4 py-2 rounded transition-all hover:bg-blue-500 hover:text-white ${
                 location.pathname === item.path ? "bg-blue-500 text-white" : ""
               }`}
               text={
-                <div className="flex items-center gap-4">
+                <div
+                  className={`flex items-center w-full ${
+                    collapsed ? "justify-center" : "gap-4"
+                  }`}
+                >
                   {item.icon}
                   {!collapsed && <span>{item.name}</span>}
                 </div>
