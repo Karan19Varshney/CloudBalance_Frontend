@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
-import Navbar from '../../components/HeaderAndFooter/Header';
-import Footer from '../../components/HeaderAndFooter/Footer';
-import SidebarView from '../../components/Sidebar/SidebarView'; 
-
-
-import sidebarItems from '../../components/Sidebar/SidebarConfig';
+import React, { useState } from "react";
+import { Outlet } from "react-router-dom";
+import Navbar from "../../components/HeaderAndFooter/Header";
+import Footer from "../../components/HeaderAndFooter/Footer";
+import SidebarView from "../../components/Sidebar/SidebarView";
+import sidebarItems from "../../components/Sidebar/SidebarConfig";
 
 const Layout = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -18,9 +16,10 @@ const Layout = () => {
 
       <div className="flex flex-1 overflow-hidden">
         <aside
-          className={`transition-all duration-300 shrink-0 ${
-            collapsed ? 'w-20' : 'w-64'
-          }`}
+          className="shrink-0 overflow-hidden transition-all duration-300 ease-in-out"
+          style={{
+            width: collapsed ? "5rem" : "16rem",
+          }}
         >
           <SidebarView
             items={sidebarItems}

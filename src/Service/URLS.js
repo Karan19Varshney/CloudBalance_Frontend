@@ -12,7 +12,12 @@ export const URLS = {
 
     GetEC2Instances:"/aws/ec2",
     GetRDSInstances:"aws/rds",
-    GetASGInstances:"aws/asg"
+    GetASGInstances:"aws/asg",
+
+
+    GROUP_BY_COST_EXPLORER : "/cost-explorer",
+    DYNAMIC_QUERY: "/snowflake/graph-data",
+    FILTER_WHERE_DATA : "/snowflake/filterData"
 
   };
   

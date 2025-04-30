@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import LoginFormConfig from "./LoginFormConfig";
 import { ToastContainer, toast } from "react-toastify";
@@ -65,7 +64,7 @@ const LoginForm = () => {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
-      <ToastContainer position="top-right" autoClose={3000} />
+      <ToastContainer position="top-right" autoClose={3500} />
     </>
   );
 };

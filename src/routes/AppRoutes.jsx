@@ -12,7 +12,7 @@ import RoleProtectedRoute from '../components/auth/ProtectedRoute';
 import Layout from '../Pages/Layout/Layout';
 
 // Dashboard pages
-import CostExplorer from '../Pages/Dashboard/CostExplorer/CostExplorer';
+import CostExplorer from '../Pages/Dashboard/CostExplorer';
 import AwsServices from '../Pages/Dashboard/AwsServices/AwsServices';
 import OnBoarding from '../Pages/Dashboard/OnBoarding/index';
 import UserManagement from '../Pages/Dashboard/UserManagement/UserManagement';

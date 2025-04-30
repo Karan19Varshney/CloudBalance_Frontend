@@ -58,16 +58,6 @@ const LoginFormConfig = ({
           </div>
 
           {error && <p className="text-red-600 text-sm">{error}</p>}
-
-          {/* <button
-            type="submit"
-            disabled={!isFormValid}
-            className={`w-full py-2 px-4 rounded-md text-white font-semibold transition ${
-              isFormValid ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-300 cursor-not-allowed'
-            }`}
-          >
-            LOGIN
-          </button> */}
           <CommonButton
             type="submit"
             disabled={!isFormValid}
