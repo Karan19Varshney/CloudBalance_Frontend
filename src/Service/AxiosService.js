@@ -20,22 +20,26 @@ api.interceptors.request.use((config) => {
 });
 
 api.interceptors.response.use(
-    (response) => response.data,
-    (error) => {
-      if (401 === error.response.status) {
-        localStorage.removeItem("token");
-        store.dispatch(clearUserData());
-        // toast.error("session Logout");
-        window.location.href = "/";
-        
-      }
-        const customError = {
-            status: error.response?.status,
-            message: error.response?.data?.message || error.message,
-            data: error.response?.data,
-        };
-        return Promise.reject(customError);
+  (response) => response.data,
+  (error) => {
+    const status = error.response?.status;
+    const url = error.config?.url;
+
+    // Check if 401 and NOT login request
+    if (status === 401 && !url.includes("/auth/login")) {
+      localStorage.removeItem("token");
+      store.dispatch(clearUserData());
+      () => toast.error("Session expired. Please login again.");
     }
+
+    const customError = {
+      status: status,
+      message: error.response?.data?.message || error.message,
+      data: error.response?.data,
+    };
+
+    return Promise.reject(customError);
+  }
 );
 
 const apiClient = {
